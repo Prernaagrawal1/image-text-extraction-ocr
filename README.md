@@ -54,7 +54,7 @@ image-text-extraction-ocr/
 
 ---
 
-▶️ How to Run
+## ▶️ How to Run
 1️⃣ Install dependencies
 pip install -r requirements.txt
 
