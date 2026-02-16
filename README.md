@@ -66,7 +66,7 @@ python camera_test.py
 
 --- 
 
-📈 Results
+## 📈 Results
 Accurate text extraction from printed images
 Real-time recognition using webcam
 Performance visualized through plots and annotated images
@@ -74,7 +74,7 @@ Performance visualized through plots and annotated images
 ---
 
 
-🔮 Future Scope
+## 🔮 Future Scope
 Support for multilingual OCR (Hindi + English)
 Deploy as web application using Streamlit
 Improve accuracy using deep learning-based OCR models
