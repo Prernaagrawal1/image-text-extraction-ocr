@@ -25,20 +25,24 @@ This project is developed as a **final-year major project**.
 - OpenCV  
 - Matplotlib  
 - Anaconda (Conda environment)
-- 
+  
 ## Project Structure
----Major_Project/
+image-text-extraction-ocr/
 ├── project.py
+├── camera_test.py
 ├── README.md
+├── requirements.txt
 ├── ocr_results.txt
 ├── ground_truth.txt
-├── images/
+│
+├─── images/
 │ ├── train/
 │ └── test/
-└── output_images/
-├── ocr_result/
-├── plots/
-└── camera_snaps/
+│
+└─── output_images/
+  ├── ocr_result/
+  ├── plots/
+  └── camera_snaps/
 
 ---
 
@@ -50,45 +54,27 @@ This project is developed as a **final-year major project**.
 
 ---
 
-## How to Run
-1. Activate Conda environment:
-   ```bash
-     conda activate base
-   
----
+▶️ How to Run
+1️⃣ Install dependencies
+pip install -r requirements.txt
 
-## Evaluation Method
-- OCR is performed on all images in the dataset.
-- Ground truth is manually created for **50 selected images**.
-- Accuracy is calculated by comparing OCR output with ground truth.
-- Performance is analyzed using visual plots and annotated images.
+2️⃣ Run OCR on images
+python project.py
 
----
+3️⃣ Run live camera OCR
+python camera_test.py
 
-## How to Run
-1. Activate Conda environment:
-   ```bash
-   conda activate base
+--- 
+
+📈 Results
+Accurate text extraction from printed images
+Real-time recognition using webcam
+Performance visualized through plots and annotated images
 
 ---
 
-## Evaluation Method
-- OCR is performed on all images in the dataset.
-- Ground truth is manually created for **50 selected images**.
-- Accuracy is calculated by comparing OCR output with ground truth.
-- Performance is analyzed using visual plots and annotated images.
 
----
-
-## How to Run
-1. Activate Conda environment:
-   ```bash
-   conda activate base
-2. Run the project:
- ```bash
-   python project.py
-
-
-
-## Project Structure
-
+🔮 Future Scope
+Support for multilingual OCR (Hindi + English)
+Deploy as web application using Streamlit
+Improve accuracy using deep learning-based OCR models
