@@ -56,25 +56,25 @@ image-text-extraction-ocr/
 
 ## ▶️ How to Run
 1️⃣ Install dependencies
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 2️⃣ Run OCR on images
-python project.py
+   python project.py
 
 3️⃣ Run live camera OCR
-python camera_test.py
+   python camera_test.py
 
 --- 
 
 ## 📈 Results
-Accurate text extraction from printed images
-Real-time recognition using webcam
-Performance visualized through plots and annotated images
+- Accurate text extraction from printed images
+- Real-time recognition using webcam
+- Performance visualized through plots and annotated images
 
 ---
 
 
 ## 🔮 Future Scope
-Support for multilingual OCR (Hindi + English)
-Deploy as web application using Streamlit
-Improve accuracy using deep learning-based OCR models
+- Support for multilingual OCR (Hindi + English)
+- Deploy as web application using Streamlit
+- Improve accuracy using deep learning-based OCR models
