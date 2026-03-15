@@ -5,15 +5,14 @@ import os
 import cv2
 import easyocr
 import matplotlib.pyplot as plt
+import time
 
-# ===============================
+
 # INITIALIZE OCR
-# ===============================
 reader = easyocr.Reader(['en'], gpu=False)
 
-# ===============================
+
 # LIVE CAMERA OCR (BEST VERSION)
-# ===============================
 print("\n--- Advanced Live Camera OCR ---")
 print("Controls:")
 print("O -> Toggle OCR ON/OFF")
@@ -25,7 +24,8 @@ os.makedirs("output_images/camera_snaps", exist_ok=True)
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 if not cap.isOpened():
-    print("ERROR: Camera not accessible")
+    print("Camera not accessible. Switching to image mode...")
+    os.system("python image_test.py")
     sys.exit()
 
 ocr_enabled = True
@@ -40,7 +40,7 @@ while True:
 
     frame_count += 1
 
-    # ========= BEST UNIVERSAL OCR PREPROCESSING =========
+    #  BEST UNIVERSAL OCR PREPROCESSING 
 
     # Resize (huge accuracy boost)
     frame_resized = cv2.resize(
@@ -67,23 +67,34 @@ while True:
         11, 2
     )
 
-    # ========= OCR (run every 15 frames) =========
+
+#  OCR (run every 15 frames) 
+
     if ocr_enabled and frame_count % 15 == 0:
         try:
+            start_time = time.time()
+
             ocr_color = reader.readtext(enhanced)
             ocr_thresh = reader.readtext(thresh)
+
+            end_time = time.time()
+
             ocr_results = ocr_color + ocr_thresh
+
+            inference_time = (end_time - start_time) * 1000
+            print(f"Inference Time: {inference_time:.2f} ms")
+
         except:
             ocr_results = []
 
-    # ========= STABILIZE TEXT =========
+    # STABILIZE TEXT 
     stable_text.clear()
     for bbox, text, conf in ocr_results:
         if conf < 0.6:
             continue
         stable_text[text] = max(conf, stable_text.get(text, 0))
 
-    # ========= DRAW RESULTS =========
+    # DRAW RESULTS 
     for text, conf in stable_text.items():
         for bbox, t, _ in ocr_results:
             if t == text:
@@ -103,7 +114,7 @@ while True:
                 )
                 break
 
-    # ========= INSTRUCTIONS =========
+    # INSTRUCTIONS
     cv2.putText(
         frame_resized,
         "O: OCR ON/OFF | S: Save | Q: Quit",
@@ -129,9 +140,8 @@ while True:
         cv2.imwrite(snap_name, frame_resized)
         print(f"Snapshot saved: {snap_name}")
 
-# ===============================
+
 # CLEAN EXIT
-# ===============================
 cap.release()
 cv2.destroyAllWindows()
 print("Advanced Camera OCR Stopped.")
